@@ -1,0 +1,107 @@
+package com.company; 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+class Main{
+
+    JFrame frame = new JFrame("vasileva_4"); 
+
+    JButton milan = new JButton("A");
+    JButton madrid = new JButton("B"); 
+  
+
+ 
+    int A_count = 0;
+    int B_count = 0;
+
+
+    JLabel Result = new JLabel("Result: 0 X 0");
+    JLabel Last_Scorer = new JLabel("Last Scorer: N/A");
+    Label Winner = new Label("Winner: DRAW");
+
+    Font font1 = new Font("Times new roman",Font.BOLD,20);
+    Font font2 = new Font("Serif",Font.BOLD,20);
+
+    public Main() {
+   
+        frame.setSize(240, 240);
+
+   
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setLayout(new FlowLayout());
+     
+
+        
+        A.setFont(font1);
+        B.setFont(font1);
+        Result.setFont(font1);
+        Last_Scorer.setFont(font1);
+        Winner.setFont(font2);
+
+      
+        A.setBorderPainted(false);
+        A.setFocusPainted(false);
+
+ 
+       A.setBackground(Color.RED);
+       A.setForeground(Color.BLACK);
+
+        B.setBorderPainted(false);
+        B.setFocusPainted(false);
+
+   
+        B.setBackground(Color.WHITE);
+        B.setForeground(Color.decode("0x03009c"));
+
+     
+        frame.add(A);
+        frame.add(B);
+        frame.add(Result);
+        frame.add(Last_Scorer);
+        frame.add(Winner);
+
+    
+
+        milan.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+
+                A_count++;
+                Result.setText("Result: " + A_count + " X " + madrid_count);
+                Last_Scorer.setText("Last Scorer: A");
+                if(A_count == B_count)
+                    Winner.setText("Winner: DRAW");
+                else if(A_count > B_count)
+                    Winner.setText("Winner: A");
+                else
+                    Winner.setText("Winner: B");
+            }
+        });
+
+        madrid.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+
+                B_count++;
+                Result.setText("Result: " + A_count + " X " + B_count);
+                Last_Scorer.setText("Last Scorer: B");
+                if(A_count == B_count)
+                    Winner.setText("Winner: DRAW");
+                else if(A_count > B_count)
+                    Winner.setText("Winner: A");
+                else
+                    Winner.setText("Winner: B");
+            }
+        });
+
+    }
+
+    public static void main(String[]args) {
+
+        new Main().frame.setVisible(true);
+    }
+
+
+}
